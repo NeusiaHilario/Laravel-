@@ -13,18 +13,29 @@
                             <p>Dados referentes a identificação do paciente. </p>
                         </div>
                         <div class="row">
+                        <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-star"></i>
+                                    </div>
+                                    <label for="ID">ID</label>
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$sync_temp_patients->id}}" placeholder="ID">
+                                    </div>
+                                </div>
+                            </div>-->
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-star"></i>
                                     </div>
-                                    <label for="ID">Codigo</label>
+                                    <label for="ID">NID</label>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" value="{{$sync_temp_patients->id}}" placeholder="Codigo">
+                                        <input type="text" class="form-control" value="{{$sync_temp_patients->patientid}}" placeholder="NID">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm- col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-support"></i>
@@ -54,7 +65,7 @@
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-star"></i>
                                     </div>
-                                    <label for="sexo">Sexo</label>
+                                    <label for="sexo">Género</label>
                                     <div class="nk-int-st">
                                         <input type="text" class="form-control" value="{{$sync_temp_patients->sex}}"  placeholder="Sexo">
                                     </div>
@@ -101,7 +112,7 @@
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-house"></i>
                                     </div>
-                                    <label for="clinic">Farmacia</label>
+                                    <label for="clinic">Farmácia privada</label>
                                     <div class="nk-int-st">
                                         <input type="text" class="form-control" value="{{$sync_temp_patients->clinicname}}"  placeholder="Farmacia">
                                     </div>
@@ -112,7 +123,7 @@
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-dollar"></i>
                                     </div>
-                                    <label for="tratamento">Data de inicio de tratamento</label>
+                                    <label for="tratamento">Data de início de tratamento</label>
                                     <div class="nk-int-st">
                                         <input type="text" class="form-control" value="{{$sync_temp_patients->datainiciotarv}}" placeholder="Tratamento">
                                     </div>
@@ -125,7 +136,7 @@
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-dollar"></i>
                                     </div>
-                                    <label for="pescritpion">Data de envio a farmacia</label>
+                                    <label for="pescritpion">Data de referência à farmácia privada</label>
                                     <div class="nk-int-st">
                                         <input type="text" class="form-control" value="{{$sync_temp_patients->prescriptiondate}}" placeholder="Data">
                                     </div>
@@ -157,7 +168,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <div> <a href="{{route('dados.medicacao', ['id' => $sync_temp_dispense->id])}}"class="btn btn-warning" >Verificar os dados referentes a medicacao deste paciente</a></div>
+                            <div> <a href="{{route('dados.identificacao', ['id' => $sync_temp_patients->id])}}"class="btn btn-warning" >Verificar os dados referentes a medicacao deste paciente</a></div>
                         </div>
                     </div>
                 </div>
@@ -167,5 +178,67 @@
     </div>
 
 
+    <div class="data-table-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="data-table-list">
+                        <div class="basic-tb-hd">
+                            <h2>Dados referentes a medicacao deste paciente</h2>
+                            <p></p>
+                        </div>
 
+                           <div class="table-responsive">
+                            <table id="data-table-basic" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>NID</th>
+                                        <th>Data proposta de levantamento</th>
+                                        <th>Data do levantamento efectuado</th>
+                                        <th>proxima data proposta de levantamento</th>                                        
+                                        <th>Nome do Medicamento</th>
+                                        <th>Dispensa trimestral</th>
+                                        <th>Tipo de tratamento</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($lista as $dispense)
+                                <tr>
+                                    <td>
+                                        {{$dispense->patientid}}
+                                    </td>
+                                    <td>
+                                        {{$dispense->dispensedate}}
+                                    </td>
+                                    <td>
+                                        {{$dispense->pickupdate}}
+                                    </td>
+                                    <td>
+                                        {{$dispense->dateexpectedstring}}
+                                    </td>
+                                    <td>
+                                        {{$dispense->drugname}}
+                                    </td>         
+                                    <td>
+                                        {{$dispense->dispensatrimestral}}
+                                    </td>  
+                                    <td>
+                                        {{$dispense->regimenome}}
+                                    </td>                          
+                                                              
+                                </tr>
+                                @endforeach                        
+                                </tbody>
+                 
+                               
+                            </table>
+                           </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                           
 @include('admin.Footer')

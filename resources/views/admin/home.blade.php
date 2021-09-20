@@ -48,12 +48,13 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Código</th>
+                                        <th>NID</th>
                                         <th>Nome</th>
                                         <th>Apelido</th>
                                         <th>Género</th>                                        
                                         <th>Unidade sanitária</th>
-                                        <th>Actions</th>
+                                        <th>Farmácia privada</th>
+                                        <th>Opções</th>
                                         
                                     </tr>
                                 </thead>
@@ -61,7 +62,7 @@
                                 @foreach($pacientelista as $receber)
                                 <tr>
                                     <td>
-                                        {{$receber->id}}
+                                        {{$receber->patientid}}
                                     </td>
                                     <td>
                                         {{$receber->firstnames}}
@@ -74,7 +75,10 @@
                                     </td>
                                     <td>
                                         {{$receber->mainclinicname}}
-                                    </td>                                   
+                                    </td>         
+                                    <td>
+                                        {{$receber->clinicname}}
+                                    </td>                           
                                     <td>
                                     <a href="{{route('dados.identificacao', ['id' => $receber->id])}}" class="btn btn-warning">Ver mais</a>                                  
                                     </td>   

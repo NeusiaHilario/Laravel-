@@ -57,4 +57,7 @@ class sync_temp_patients extends Model
         'dispensatrimestral'
     ];
     
+    public function sync_temp_dispense(){
+        return $this->hasMany('App\Models\sync_temp_dispense', 'id', 'sync_temp_patients_id');
+    }
 }

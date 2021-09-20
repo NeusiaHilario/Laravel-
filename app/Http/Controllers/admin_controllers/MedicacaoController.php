@@ -47,10 +47,10 @@ class MedicacaoController extends Controller
      */
     public function show($id)
     {
-        $medicacao = sync_temp_dispense::find($id);
+        $medicacao = sync_temp_dispense::all();
        
         return view('admin.Medicacao')
-            ->with('sync_temp_dispense', $medicacao);
+            ->with('lista', $medicacao);
     }
 
     /**
