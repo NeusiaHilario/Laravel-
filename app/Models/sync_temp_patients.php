@@ -55,10 +55,10 @@ class sync_temp_patients extends Model
         'motivocriacaoespecia',
         'mainclinicname',
         'dispensatrimestral',
-        'sync_temp_patients_id'
+        'sync_temp_dispense_id'
     ];
     
     public function sync_temp_dispense(){
-        return $this->hasMany('App\Models\sync_temp_dispense', 'id', 'sync_temp_patients_id');
+        return $this->hasMany('App\Models\sync_temp_dispense', 'id', 'sync_temp_dispense_id');
     }
 }
