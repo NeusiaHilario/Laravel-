@@ -59,6 +59,6 @@ class sync_temp_patients extends Model
     ];
     
     public function sync_temp_dispense(){
-        return $this->hasMany('App\Models\sync_temp_dispense', 'id', 'sync_temp_dispense_id');
+        return $this->belongsTo('App\Models\sync_temp_dispense', 'id', 'sync_temp_dispense_id');
     }
 }
