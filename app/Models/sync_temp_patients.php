@@ -54,7 +54,8 @@ class sync_temp_patients extends Model
         'prescricaoespecial',
         'motivocriacaoespecia',
         'mainclinicname',
-        'dispensatrimestral'
+        'dispensatrimestral',
+        'sync_temp_patients_id'
     ];
     
     public function sync_temp_dispense(){
