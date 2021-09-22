@@ -56,9 +56,8 @@ class sync_temp_patients extends Model
         'prescricaoespecial',
         'motivocriacaoespecia',
         'mainclinicname',
+
         'dispensatrimestral'
        
     ];
-    
-    
 }
