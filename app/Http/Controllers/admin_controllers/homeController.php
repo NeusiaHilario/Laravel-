@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\sync_temp_patients;
-use App\Models\sync_temp_dispense;
+
 
 
 class homeController extends Controller

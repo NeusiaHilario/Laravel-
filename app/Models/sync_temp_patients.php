@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+\Carbon\Carbon::setToStringFormat('d-m-Y');
 class sync_temp_patients extends Model
 {
     use HasFactory;
@@ -15,6 +16,7 @@ class sync_temp_patients extends Model
      * @var array
      */
     /** protected $table="sync_temp_patients"; */
+    protected $dates = ['prescriptiondate','datainiciotarv','dateofbirth'];
     protected $fillable = [
         'accountstatus',
         'cellphone',
@@ -55,9 +57,8 @@ class sync_temp_patients extends Model
         'motivocriacaoespecia',
         'mainclinicname',
         'dispensatrimestral'
+       
     ];
     
-    public function sync_temp_dispense(){
-        return $this->hasMany('App\Models\sync_temp_dispense', 'id', 'sync_temp_patients_id');
-    }
+    
 }
