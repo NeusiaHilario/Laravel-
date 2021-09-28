@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+\Carbon\Carbon::setToStringFormat('d-m-Y');
 class sync_temp_dispense extends Model
 {
     use HasFactory;
@@ -15,6 +16,8 @@ class sync_temp_dispense extends Model
      * @var array
      */
     /** protected $table="sync_temp_dispense"; */
+    protected $dateFormat = 'Y-m-d ';
+    protected $dates = ['dispensedate', 'pickupdate', 'dateexpectedstring'];
     protected $fillable = [
         'id',
         'clinicalstage',
