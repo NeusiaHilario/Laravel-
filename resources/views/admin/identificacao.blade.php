@@ -197,7 +197,7 @@
                'sync_temp_dispense.dispensatrimestral AS dispensatrimestral',
                'sync_temp_dispense.regimenome AS regimenome')
                
-                  ->where('sync_temp_dispense.patientfirstname', '=', 'sync_temp_patients.firstnames')
+                  ->where('$dispense_lista.patientid', '=', '$sync_temp_patients.patientid')
                 
                ->get();
             @endphp
