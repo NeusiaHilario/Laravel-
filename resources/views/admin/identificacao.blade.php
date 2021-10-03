@@ -32,7 +32,7 @@
                                     </div>
                                     <label for="ID">NID</label>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" value="{{$sync_temp_patients->patientid}}" placeholder="NID">
+                                        <input type="text" class="form-control" ID="lab" value="{{$sync_temp_patients->patientid}}" name="NID" placeholder="NID">
                                     </div>
                                 </div>
                             </div>
@@ -75,11 +75,12 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-star"></i>
+                                        <i class="notika-icon notika-house" ></i>
                                     </div>
-                                    <label for="birthday">Data de Nascimento</label>
+                                    <label for="mainclinic">Unidade sanitária                             
+                                    </label>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control"  value="{{$sync_temp_patients->dateofbirth}}"  placeholder="Data de Nascimento">
+                                        <input type="text" class="form-control" value="{{$sync_temp_patients->mainclinicname}}"   placeholder="Unidade sanitária">
                                     </div>
                                 </div>
                             </div>
@@ -96,18 +97,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-house" ></i>
-                                    </div>
-                                    <label for="mainclinic">Unidade sanitária                             
-                                    </label>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" value="{{$sync_temp_patients->mainclinicname}}"   placeholder="Unidade sanitária">
-                                    </div>
-                                </div>
-                            </div>
+                        
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -130,8 +120,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int form-elet-mg res-mg-fcs">
                                     <div class="form-ic-cmp">
@@ -143,7 +131,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        </div>
+                        <div class="row">
+                           
+                            <!--<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                 <div class="form-group ic-cmp-int form-elet-mg res-mg-fcs">
                                     <div class="form-ic-cmp">
                                         <i class="notika-icon notika-star"></i>
@@ -154,7 +145,7 @@
                                     </div>
                                     
                                 </div>
-                            </div>
+                            </div>-->
                             <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int form-elet-mg">
                                     <div class="form-ic-cmp">
@@ -169,7 +160,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <div> <a href="{{route('dados.medicacao')}}" class="btn btn-warning" >Verificar dados referentes a medicação do paciente </a></div>
+                            
                         </div>
                     </div>
                 </div>
@@ -178,28 +169,30 @@
         </div>
     </div>
 
-
-    
+   
+         
     <div class="data-table-area">
         <div class="container">
             <div class="row">
 
             @php
            
+            $patient_id =  $sync_temp_patients->patientid;
+         
             $dispense_lista=DB::table('sync_temp_dispense')->select(
             
             'sync_temp_dispense.patientid AS patientid', 
-            'sync_temp_dispense.patientfirstname AS patientfirstname',
             'sync_temp_dispense.dispensedate AS dispensedate',
-             'sync_temp_dispense.pickupdate AS pickupdate',
-              'sync_temp_dispense.dateexpectedstring AS dateexpectedstring',
-               'sync_temp_dispense.drugname AS drugname',
-               'sync_temp_dispense.dispensatrimestral AS dispensatrimestral',
-               'sync_temp_dispense.regimenome AS regimenome')
-               
-                  ->where('sync_temp_dispense.patientfirstname', '=', 'sync_temp_patients.firstnames')
-                
-               ->get();
+            'sync_temp_dispense.pickupdate AS pickupdate',
+            'sync_temp_dispense.dateexpectedstring AS dateexpectedstring',
+            'sync_temp_dispense.drugname AS drugname',
+            'sync_temp_dispense.dispensatrimestral AS dispensatrimestral',
+            'sync_temp_dispense.regimenome AS regimenome')
+            
+            ->where('patientid', '=', $patient_id  )
+            ->orderBy('pickupdate', 'desc')
+            ->distinct()
+            ->get();
             @endphp
             @if($dispense_lista)
            
@@ -216,11 +209,11 @@
                                     <tr>
                                         
                                         <th>NID</th>
-                                        <th>Nome</th>
-                                        <th>Data proposta de levantamento</th>
-                                        <th>Data do levantamento efectuado</th>
-                                        <th>proxima data proposta de levantamento</th>                                        
-                                        <th>Nome do Medicamento</th>
+                                        
+                                        <th>Medicamento</th>
+                                        <th>Data de levantamento</th>
+                                        <th>proxima data de levantamento</th>                                        
+                                        
                                         <th>Dispensa trimestral</th>
                                         <th>Tipo de tratamento</th>
                                         
@@ -236,12 +229,10 @@
                                     <td>
                                     {{$lista->patientid}}
                                     </td>
-                                    <td>
-                                    {{$lista->patientfirstname}}
-                                    </td>
+
                                  @if($lista)
-                                    <td>
-                                    {{ Carbon\Carbon::parse($lista->dispensedate)->format('d-m-Y')}} 
+                                     <td>
+                                    {{$lista->drugname}} 
                                     </td>
                                     <td>
                                     {{ Carbon\Carbon::parse($lista->pickupdate)->format('d-m-Y')}}  
@@ -249,9 +240,7 @@
                                     <td>
                                     {{ Carbon\Carbon::parse($lista->dateexpectedstring)->format('d-m-Y')}}  
                                     </td>
-                                    <td>
-                                    {{$lista->drugname}} 
-                                    </td>         
+                                            
                                     @if($lista->dispensatrimestral == 1)        
                                     <td>
                                         {{'Sim'}}

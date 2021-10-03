@@ -4,7 +4,7 @@
             <div class="row">
 
             @php
-            $dispense_lista=DB::table('sync_temp_dispense')->select('sync_temp_dispense.id AS id', 
+            $dispense_lista=DB::table('sync_temp_dispense')->select('sync_temp_dispense.id AS id',
             'sync_temp_dispense.patientid AS patientid',
             'sync_temp_dispense.patientfirstname AS patientfirstname',
             'sync_temp_dispense.dispensedate AS dispensedate',

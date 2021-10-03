@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\sync_temp_patients;
-
+use App\Models\sync_temp_dispense;
 class identificacaoController extends Controller
 {
     /**
@@ -53,10 +53,7 @@ class identificacaoController extends Controller
         
         return view('admin.identificacao')
             ->with('sync_temp_patients', $paciente);
-            
-     
-
-    
+                    
     }
 
     

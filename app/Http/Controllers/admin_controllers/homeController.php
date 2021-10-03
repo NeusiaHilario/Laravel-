@@ -22,6 +22,7 @@ class homeController extends Controller
 
          return view('admin.home')
          ->with('pacientelista', $paciente);
+         
     }
 
     /**
