@@ -45,7 +45,7 @@
                             <p></p>
                         </div>
                         <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
+                            <table id="data-table-basic" placeholder="pesquisar..." class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>NID</th>
@@ -97,10 +97,15 @@
                                     </tr>
                                 </tfoot>
                             </table>
+
+
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        
     </div>
     @include('admin.Footer')

@@ -11,7 +11,7 @@
                         </div>
                         <div class="cmp-tb-hd bcs-hd">
                             <!--<h2>Basic Example</h2>-->
-                            <p>Dados referentes a identificação do paciente. </p>
+                            <p>Dados referentes à identificação do paciente. </p>
                         </div>
                         <div class="row">
                         <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -72,6 +72,18 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-phone"></i>
+                                    </div>
+                                    <label for="contacto">Contacto</label>
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$sync_temp_patients->cellphone}}"  placeholder="Contacto">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -81,17 +93,6 @@
                                     </label>
                                     <div class="nk-int-st">
                                         <input type="text" class="form-control" value="{{$sync_temp_patients->mainclinicname}}"   placeholder="Unidade sanitária">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-phone"></i>
-                                    </div>
-                                    <label for="contacto">Contacto</label>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" value="{{$sync_temp_patients->cellphone}}"  placeholder="Contacto">
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +188,8 @@
             'sync_temp_dispense.dateexpectedstring AS dateexpectedstring',
             'sync_temp_dispense.drugname AS drugname',
             'sync_temp_dispense.dispensatrimestral AS dispensatrimestral',
-            'sync_temp_dispense.regimenome AS regimenome')
+            'sync_temp_dispense.regimenome AS regimenome',
+            'sync_temp_dispense.uuidopenmrs AS uuidopenmrs')
             
             ->where('patientid', '=', $patient_id  )
             ->orderBy('pickupdate', 'desc')
@@ -198,18 +200,18 @@
             @if($dispense_lista)
            
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="data-table-list">
+                    <div class="data-table-list mg-t-30">
                         <div class="basic-tb-hd">
-                            <h2>Dados referentes a medicacao deste paciente</h2>
-                            <p></p>
+                            <h2>Histórico clínico </h2>
+                            
                         </div>
 
-                           <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
+                        <div class="bsc-tbl-bdr">
+                            <table id="customers">
+                                
                                 <thead>
                                     <tr>
                                         
-                                        <th>NID</th>
                                         
                                         <th>Medicamento</th>
                                         <th>Data de levantamento</th>
@@ -217,7 +219,7 @@
                                         
                                         <th>Dispensa trimestral</th>
                                         <th>Tipo de tratamento</th>
-                                        
+                                        <th>Uuid Openmrs</th>
                                     </tr>
                                 </thead>
                                 
@@ -228,13 +230,11 @@
                                     <tr>
                                    
                                     <td>
-                                    {{$lista->patientid}}
+                                    {{$lista->drugname}} 
                                     </td>
 
                                  @if($lista)
-                                     <td>
-                                    {{$lista->drugname}} 
-                                    </td>
+                                    
                                     <td>
                                     {{ Carbon\Carbon::parse($lista->pickupdate)->format('d-m-Y')}}  
                                     </td>
@@ -251,7 +251,10 @@
                                     @endif 
                                     <td>
                                     {{$lista->regimenome}}  
-                                    </td>                          
+                                    </td>
+                                    <td>
+                                    {{$lista->uuidopenmrs}} 
+                                    </td>                        
                                    </tr>
                                  @endif
                                  @endif
