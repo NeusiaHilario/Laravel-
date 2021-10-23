@@ -1,6 +1,8 @@
 
 @include('admin.Navbar') 
 <title>pacientes_registados</title>  
+<p></p>
+<p></p>
 
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
@@ -21,21 +23,28 @@
 										<p>Bem vindo ao sistema </p>
 									</div>
 								</div>
+                               </div>
 							</div>
+                            </div>
+                            </div>
+                            </div>
 							<!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
 									<button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
 								</div>-->
 							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+    <p></p>
 	<!-- Breadcomb area End--> 
-<!-- Data Table area Start-->
-<div class="data-table-area">
+ <!-- Data Table area Start-->
+ 
+ <div class="data-table-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -88,12 +97,13 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <!--<th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>-->
+                                    <th>NID</th>
+                                        <th>Nome</th>
+                                        <th>Apelido</th>
+                                        <th>Género</th>                                        
+                                        <th>Unidade sanitária</th>
+                                        <th>Farmácia privada</th>
+                                        <th>Opções</th>
                                     </tr>
                                 </tfoot>
                             </table>
