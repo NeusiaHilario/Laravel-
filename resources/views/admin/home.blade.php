@@ -21,6 +21,8 @@
                                     <div class="breadcomb-ctn">
 										<h2>Pacientes_registados</h2>
 										<p>Bem vindo ao sistema </p>
+                                        <p></p>
+                                        
 									</div>
 								</div>
                                </div>
@@ -41,6 +43,8 @@
 		</div>
 	</div>
     <p></p>
+
+    
 	<!-- Breadcomb area End--> 
  <!-- Data Table area Start-->
  
@@ -54,7 +58,8 @@
                             <p></p>
                         </div>
                         <div class="table-responsive">
-                            <table id="data-table-basic" placeholder="pesquisar..." class="table table-striped">
+                            
+                            <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>NID</th>
@@ -107,6 +112,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
+                            
 
 
                             
