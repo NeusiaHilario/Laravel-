@@ -18,10 +18,26 @@ class homeController extends Controller
     public function index()
     {
 
-         $paciente = sync_temp_patients::all();
+        $search = request('search');
 
-         return view('admin.home')
-         ->with('pacientelista', $paciente);
+        if($search) {
+    
+            $paciente = sync_temp_patients::where([
+    
+                ['firstnames', 'like', '%'.$search.'%']
+            ])->get();
+       
+        } else {
+    
+            $paciente = sync_temp_patients::paginate(5);
+            
+        }
+    
+     
+    
+        return view('admin.home', ['pacientelista'=> $paciente, 'search' => $search]);
+   
+
          
     }
 
@@ -90,4 +106,6 @@ class homeController extends Controller
     {
         //
     }
+
+    
 }
