@@ -1,4 +1,3 @@
-
 @include('admin.Navbar') 
 <title>pacientes_registados</title>  
 <p></p>
@@ -18,12 +17,24 @@
 									</div>
                                   
         
-                                    <div class="breadcomb-ctn">
+                                    <div class="breadcomb-ctn" >
 										<h2>Pacientes_registados</h2>
-										<p>Bem vindo ao sistema </p>
-                                        <p></p>
-                                        
-									</div>
+										<p></p>
+                                       
+
+                                  
+                                    
+                                </div>
+                                </div>
+                                <div>
+
+                                </div>
+                                <p></p>
+                                <form action="/pacientes_registados" method="GET" >
+                                    <input type="text" id="search" name="search" class="form-control" placeholder="pesquise pelo nome do paciente e pressione Enter para obter resultados...">
+                                    </form>
+                                    </div>
+
 								</div>
                                </div>
 							</div>
@@ -72,6 +83,9 @@
                                         
                                     </tr>
                                 </thead>
+
+
+
                                 <tbody>
                                 @foreach($pacientelista as $receber)
                                 <tr>
@@ -98,7 +112,13 @@
                                     </td>   
                                                                 
                                 </tr>
-                                @endforeach                        
+                                @endforeach   
+                                @if(count($pacientelista) == 0 && $search)
+                               <p>Não foi possível encontrar nenhum paciente com o nome {{ $search }}!</p>
+                                @elseif(count($pacientelista) == 0)
+                                <p>Não há pacientes disponíveis</p>
+
+                                @endif                 
                                 </tbody>
                                 <tfoot>
                                     <tr>
