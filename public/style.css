@@ -51,6 +51,28 @@
 
 -----------------------------------------------------------------------------------*/
 
+#search-container{
+
+    background-position: center;
+    height: 400px;
+    padding: 50px;
+    text-align: center;
+}
+
+#search-container h1 {
+
+    color: #f2a340;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+#search-container form {
+
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Events list */
 /*----------------------------------------*/
 /*  1.  Theme default CSS
 /*----------------------------------------*/
