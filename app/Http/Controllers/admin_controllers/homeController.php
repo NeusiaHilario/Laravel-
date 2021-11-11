@@ -18,19 +18,26 @@ class homeController extends Controller
     public function index()
     {
 
+        
         $search = request('search');
+        $existe = preg_match('/\d/', $search);
 
-        if($search) {
+        if(($existe)){
+            $paciente = sync_temp_patients::where([
     
+                ['patientid', 'like', '%'.$search.'%']
+            ])->get();
+       
+           
+        } elseif ($search) {
             $paciente = sync_temp_patients::where([
     
                 ['firstnames', 'like', '%'.$search.'%']
             ])->get();
-       
-        } else {
-    
-            $paciente = sync_temp_patients::paginate(5);
             
+        }else {
+            $paciente = sync_temp_patients::paginate(5);
+
         }
     
      

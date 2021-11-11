@@ -67,9 +67,9 @@
 }
 
 #search-container form {
-
+    display: block;
     width: 80%;
-    margin: 0 auto;
+    margin-left: 0 auto;
 }
 
 /* Events list */
