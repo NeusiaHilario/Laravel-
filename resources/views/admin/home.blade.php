@@ -21,9 +21,7 @@
                      </div>
                      
 
-                     <form action="/pacientes_registados" method="GET" style="margin-top:1rem;" name="frm">
-                  
-            
+                  <form action="/pacientes_registados" method="GET" style="margin-top:1rem;" onSubmit="return saveSearch();" name="frm">
                   <input type="text" id="search" name="search" class="form-control" placeholder="Insira o primeiro nome ou o NID do paciente...">
                   <div class="break">
                   <button class="btn btn-warning" onclick="return IsEmpty();" type="submit">Pesquisar <i class="fa fa-search"></i></button>
@@ -36,9 +34,14 @@
                           return false;
                           }
                         return true;
-                                     }
+                     
+                     }
                             
                   </script>
+                  
+
+
+
                   </form>
                </div>
             </div>
@@ -255,4 +258,16 @@
   }
 }
     </style>
+
+   <script>
+document.getElementById("search").value = localStorage.getItem("pesquisa");
+
+function saveSearch() {
+    var pesquisa = document.getElementById("search").value;
+    localStorage.setItem("pesquisa", pesquisa);    
+    location.reload();
+    return true;
+    //return true;
+}
+   </script>
 @include('admin.Footer')
