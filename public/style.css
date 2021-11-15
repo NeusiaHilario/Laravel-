@@ -51,6 +51,28 @@
 
 -----------------------------------------------------------------------------------*/
 
+#search-container{
+
+    background-position: center;
+    height: 400px;
+    padding: 50px;
+    text-align: center;
+}
+
+#search-container h1 {
+
+    color: #f2a340;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+#search-container form {
+    display: block;
+    width: 80%;
+    margin-left: 0 auto;
+}
+
+/* Events list */
 /*----------------------------------------*/
 /*  1.  Theme default CSS
 /*----------------------------------------*/
@@ -2665,6 +2687,30 @@ hr {
 /*----------------------------------------*/
 /*  34.  Data Table CSS
 /*----------------------------------------*/
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #00c292;
+    color: white;
+  }
+
 .dataTables_filter, .dataTables_length {
     padding: 20px 15px;
 	padding-top: 0px;
@@ -2687,6 +2733,7 @@ hr {
     line-height: 100%;
     background-color: #fff;
 	outline:none;
+    
 }
 .dataTables_filter input:focus, .dataTables_filter select:focus, .dataTables_length input:focus, .dataTables_length select:focus, .dataTables_length option:focus {
     border: 1px solid #00c292;
@@ -2750,6 +2797,7 @@ hr {
 }
 #data-table-basic {
     padding: 20px 0px;
+    
 }
 .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate{
 	padding-top:0px;
@@ -2829,7 +2877,7 @@ hr {
     position: absolute;
     top: 5px;
     font-weight: 400;
-    color: #959595;
+    color: #8a6e6e;
     pointer-events: none;
     z-index: 0;
     left: 0;
@@ -3008,6 +3056,7 @@ textarea.auto-size {
     position: relative;
     background: #F7F7F7;
     margin-top: -10px;
+    
 }
 .bootstrap-select .bs-searchbox:before {
     position: absolute;

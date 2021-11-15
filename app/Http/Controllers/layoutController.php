@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\admin_controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\sync_temp_dispense;
 class layoutController extends Controller
 {
     /**
@@ -14,7 +14,10 @@ class layoutController extends Controller
      */
     public function index()
     {
-        return view('admin.layout');
+        
+        $paciente2 = sync_temp_dispense::all();
+        return view('admin.layout')
+        ->with('lista', $paciente2);
     }
 
     /**

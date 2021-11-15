@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="footer-copy-right">
-                        <p>SISTEMA DE GESTÃO DE PACIENTES © 2021 
+                        <p>MONITORIA DE PACIENTES NA DD © 2021 
 <!--. DENSEVOLVIDO POR <a href="https://colorlib.com">FOOTER</a>.--></p>
                     </div>
                 </div>
@@ -88,6 +88,7 @@
 		============================================ -->
         <script src="js/data-table/jquery.dataTables.min.js"></script>
         <script src="js/data-table/data-table-act.js"></script>
+  
     <!-- main JS
 </body>
 

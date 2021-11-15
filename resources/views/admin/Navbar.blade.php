@@ -77,7 +77,7 @@
                     <div class="logo-area">
                         <!--<a href="#"><img src="img/logo/logo.png" alt="" /></a>-->
                         <p></p>
-                        <h4>SISTEMA DE GESTÃO DE PACIENTES </h4>
+                        <h5>MONITORIA DE PACIENTES NA DD </h5>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">

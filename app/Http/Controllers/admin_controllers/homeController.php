@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\sync_temp_patients;
-use App\Models\sync_temp_dispense;
+
 
 
 class homeController extends Controller
@@ -18,10 +18,34 @@ class homeController extends Controller
     public function index()
     {
 
-         $paciente = sync_temp_patients::all();
+        
+        $search = request('search');
+        $existe = preg_match('/\d/', $search);
 
-         return view('admin.home')
-         ->with('pacientelista', $paciente);
+        if(($existe)){
+            $paciente = sync_temp_patients::where([
+    
+                ['patientid', 'like', '%'.$search.'%']
+            ])->get();
+       
+           
+        } elseif ($search) {
+            $paciente = sync_temp_patients::where([
+    
+                ['firstnames', 'like', '%'.$search.'%']
+            ])->get();
+            
+        }else {
+            $paciente = sync_temp_patients::paginate(5);
+
+        }
+    
+     
+    
+        return view('admin.home', ['pacientelista'=> $paciente, 'search' => $search]);
+   
+
+         
     }
 
     /**
@@ -89,4 +113,6 @@ class homeController extends Controller
     {
         //
     }
+
+    
 }
